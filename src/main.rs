@@ -125,6 +125,18 @@ impl ELFHeader {
 		let _e_type:    u16 = rdr.read_u16::<LittleEndian>()?;
 		let _e_machine: u16 = rdr.read_u16::<LittleEndian>()?;
 		let _e_version: u32 = rdr.read_u32::<LittleEndian>()?;
+		//need to check endianess and register width before we do this
+		let _e_entry: u64 = rdr.read_u64::<LittleEndian>()?;
+		let _e_phoff: u64 = rdr.read_u64::<LittleEndian>()?;
+		let _e_shoff: u64 = rdr.read_u64::<LittleEndian>()?;
+
+			
+		println!("[ELFHeader::from_reader] _elfheader.e_type    '{:#02x}'",_e_type);
+		println!("[ELFHeader::from_reader] _elfheader.e_machine '{:#02x}'",_e_machine);
+		println!("[ELFHeader::from_reader] _elfheader.e_version '{:#02x}'",_e_version);
+		println!("[ELFHeader::from_reader] _elfheader.e_entry   '{:#02x}'",_e_entry);
+		println!("[ELFHeader::from_reader] _elfheader.e_phoff   '{:#04x}'",_e_phoff);
+		println!("[ELFHeader::from_reader] _elfheader.e_shoff   '{:#04x}'",_e_shoff);
 
 		Ok(_elf_header)
 	}
